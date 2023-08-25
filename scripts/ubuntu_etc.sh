@@ -6,8 +6,16 @@ sudo apt upgrade -y
 
 echo "**** Begin installing ubuntu-desktop"
 sudo apt install ubuntu-desktop -y
-sudo timedatectl set-timezone Europe/Amsterdam
+sudo timedatectl set-timezone Europe/Berlin
 echo "**** End installing ubuntu-desktop"
+
+#Guest Additions
+sudo apt install build-essential dkms linux-headers-$(uname -r) -y
+
+#Auto login
+echo "**** Begin setting up auto login"
+sudo sed -i 's/#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/g' /etc/gdm3/custom.conf
+sudo sed -i 's/#  AutomaticLogin = user1/AutomaticLogin = vagrant/g' /etc/gdm3/custom.conf
 
 echo "**** Begin installing Visual Studio Code"
 #Install the apt repository and signing key to enable auto-updating using the system's package manager
@@ -22,6 +30,13 @@ sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code
 echo "**** End installing Visual Studio Code"
+
+#Install Chrome
+echo "**** Begin installing Chrome"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome*.deb -y
+rm -f google-chrome*.deb
+echo "**** End installing Chrome"
 
 echo "**** Begin installing Node.js"
 # Using Ubuntu
