@@ -16,6 +16,8 @@ sudo apt install build-essential dkms linux-headers-$(uname -r) -y
 echo "**** Begin setting up auto login"
 sudo sed -i 's/#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/g' /etc/gdm3/custom.conf
 sudo sed -i 's/#  AutomaticLogin = user1/AutomaticLogin = vagrant/g' /etc/gdm3/custom.conf
+echo "**** End setting up auto login"
+
 
 echo "**** Begin installing Visual Studio Code"
 #Install the apt repository and signing key to enable auto-updating using the system's package manager
