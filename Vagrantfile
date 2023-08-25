@@ -7,10 +7,10 @@ Vagrant.configure("2") do |config|
     
     config.vm.provider "virtualbox" do |vb|
         vb.name = "Ubuntu Desktop, Visual Studio Code and Node.js"
-        vb.memory = "8192"
-        vb.cpus = "2"
+        vb.memory = "12288"
+        vb.cpus = "6"
         vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
-        vb.customize ['modifyvm', :id, '--vram', '16']
+        vb.customize ['modifyvm', :id, '--vram', '128']
         vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
         vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
         vb.gui = true
